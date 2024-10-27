@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Planet</title>
+    <link rel="stylesheet" href="/static/css/homepage.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="static/images/logo.svg" alt="logo" />
+        <div class="upload-document">
+          {% if document_name %}
+            <div class="document-name">
+              <p>{{ document_name }}</p>
+            </div>
+          {% endif %}
+          <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="file" accept="application/pdf" style="display: none;" onchange="uploadFile()" />
+            <button type="button" id="uploadButton" onclick="document.getElementById('fileInput').click()">Upload PDF</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="chatbox">
+        {% if questions %}
+          {% for i in questions %}
+            <div class="question">
+              <div class="qna">
+                <img src="static/images/ai.png" alt="">
+                <p>{{ i.question }}</p>
+              </div>
+              <div class="qna">
+                <img src="static/images/user.png" alt="">
+                <p>{{ i.answer }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="ask-question">
+        <form action="/ask" method="post">
+          <input type="hidden" name="document_name" value="{{ document_name }}" />
+          <input type="text" name="question" placeholder="Ask a question..." />
+          <button type="submit">Ask</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      function uploadFile() {
+        const fileInput = document.getElementById('fileInput')
+        const uploadForm = document.getElementById('uploadForm')
+      
+        if (fileInput.files.length > 0) {
+          document.getElementById('uploadButton').disabled = true
+          uploadForm.submit()
+        }
+      }
+    </script>
+  </body>
+</html>
