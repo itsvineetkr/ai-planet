@@ -19,7 +19,7 @@ class Questions(Base):
     answer = Column(String, index=True)
 
 class PDFs(Base):
-    __tablename__ = "questions"
+    __tablename__ = "pdfs"
 
     id = Column(Integer, primary_key=True, index=True)
     filename = Column(String, index=True)

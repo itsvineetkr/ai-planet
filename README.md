@@ -1,54 +1,46 @@
-# AI Planet Full Stack Project
+# AI Planet Internship Assignment
 
-## Project Overview
+This is a FastAPI application. It uses the `uvicorn` server to run the application.
 
-This project is a full stack application developed as part of the AI Planet initiative. It aims to demonstrate the integration of various technologies to build a comprehensive web application.
-
-## Features
-
-- User Authentication
-- Data Visualization
-- RESTful API
-- Responsive Design
-
-## Technologies Used
-
-- Frontend: HTML, CSS, JavaScript, React
-- Backend: Node.js, Express
-- Database: MongoDB
-- Version Control: Git
+## API endpoints
+1. /upload : This endpoint accepts a file and stores it in the local file system.
+2. /ask : This end point accepts a string (question) and returns a response from the AI model.
+Both endpoints render the same homepage.html template
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd your-repo-name
-    ```
-3. Install dependencies:
-    ```bash
-    npm install
+    git clone https://github.com/itsvineetkr/ai-planet.git
+    cd ai-planet
     ```
 
-## Usage
-
-1. Start the development server:
+2. **Create a virtual environment:**
     ```bash
-    npm start
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
-2. Open your browser and navigate to `http://localhost:3000`.
 
-## Contributing
+3. **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+## Setting up the .env file
 
-## License
+1. **Create a `.env` file in the root directory of your project.**
 
-This project is licensed under the MIT License.
+2. **Add the following environment variables to the `.env` file:**
+    ```env
+    HUGGINGFACEHUB_API_TOKEN = "hf_----xxxxxxx----"
+    ```
+    Replace `hf_----xxxxxxx----` and `<your-secret-key>` with your huggingface api key.
 
-## Contact
+## Running the Application
 
-For any questions or feedback, please contact [your-email@example.com](mailto:your-email@example.com).
+1. **Start the FastAPI server:**
+    ```bash
+    python main.py
+    ```
+
+    The application will be available at `http://localhost:8000/`.
